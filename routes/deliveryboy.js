@@ -45,4 +45,29 @@ router.post("/register", async (req, res) => {
     }
 })
 
+
+
+router.post("/login", async (req, res) => {
+    try {
+        let deliveryboy = await DeliveryBoy.findOne({ email: req.body.email }); //find user here
+        if (deliveryboy) {
+            //bcrypt compare
+            const match = await bcrypt.compare(req.body.password, deliveryboy.password);
+            if (match) {
+                console.log('match')
+                res.send(deliveryboy).status(200);
+            }
+            else {
+                console.log('incorrect password')
+                res.status(400).send('incorrect password')
+            }
+        } else {
+            res.status(400).send("No deliveryboy found");
+        }
+    } catch (error) {
+        res.send(error);
+        console.log(error);
+    }
+})
+
 module.exports = router;
