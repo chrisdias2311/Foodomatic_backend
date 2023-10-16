@@ -10,8 +10,8 @@ async function sendOtp(otp, email) {
             port: 587,
             secure: false,
             auth: {
-                user: "opfrost81@gmail.com", //add acc
-                pass: "ycnkioyomorbgstx"//change
+                user: "rebelloansley@gmail.com", //add acc
+                pass: "xtflaxubjalsxbcb"//change
             }
         }
     );
